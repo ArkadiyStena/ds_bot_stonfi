@@ -6,14 +6,18 @@ from time import time
 import qrcode
 
 
-def get_wallets_dict() -> dict[str, str]:
-    f = open("wallets.csv")
-    all_wallets = {}  # создаем словарь соответствий nickname - ton address
-    for elem in f.read().split('\n')[1:]:
-        elem = elem.split(';')
-        all_wallets[elem[0]] = elem[2]
-    f.close()
-    return all_wallets
+def get_address(connector: Connector, nick: str, user_id: int) -> None:
+    try:
+        address = connector.get_address()
+        f1 = open("wallets.csv")
+        addresses = f1.read()
+        f1.close()
+        addresses = list(map(lambda x: x.split(';')[2], addresses.split('\n')[1:]))
+        if address not in addresses:
+            with open("wallets.csv", 'a') as f:
+                f.write(f"\n{nick};{user_id};{address}")
+    except BridgeException:
+        print("TL")
 
 
 # def get_swaps_dict() -> dict[str, tuple[str, str]]:
