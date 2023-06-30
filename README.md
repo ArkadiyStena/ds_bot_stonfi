@@ -1,6 +1,5 @@
 # Discord bot for STON.fi
-
-This bot is designed for STON.fi (DEX on TON blockchain) Discord server. It has the following features implemented:
+This bot is designed for STON.fi (DEX on TON blockchain) <a href="https://discord.gg/stonfi">Discord server</a>. It has the following features implemented:
 - Connecting Tonkeeper to a Discord account.
 - Tracking the volume of swaps on DEX, made from the connected wallet.
 - Verification that the user owns various NFTs.
